@@ -1,0 +1,42 @@
+name: Claude Code - Ready Issues
+
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: claude-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  implement:
+    if: >-
+      github.event.issue.user.login == 'dkpcb' &&
+      contains(github.event.issue.labels.*.name, 'ready') &&
+      (github.event.action == 'opened' ||
+       (github.event.action == 'labeled' && github.event.label.name == 'ready'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Implement ready issue
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Implement repository issue #${{ github.event.issue.number }}.
+            Fetch the issue through the GitHub tools, follow CLAUDE.md, and make only relevant repository file changes.
+            If feasible, verify changes and open a pull request for human review; NEVER merge it.
+            Do not operate the live Factorio game, change game saves, access local MCP servers,
+            install or modify Factorio mods, or perform destructive actions.
+            If the issue requires a local Mac / live game connection, explain the blocker in the issue
+            and stop instead of inventing results.
+            Keep tool output and commentary concise to minimize subscription usage.
+          claude_args: |
+            --max-turns 10
