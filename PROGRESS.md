@@ -9,3 +9,7 @@ The iron and copper lines are partly built on Nauvis. At the last inspection, bo
 - **Research:** The automation science pack recipe uses one iron gear wheel and one basic circuit board. The recipe was still locked. Check the unlock condition in the technology tree before crafting the first lab.
 
 [Field reports and construction coordinates in issue #8](https://github.com/dkpcb/factorio/issues/8)
+
+## 2026-11-21 — New map connected
+
+The local Factorio server loaded the selected new save and the player joined successfully after an initial connection timeout. The next step is for Claude Code to survey nearby iron and copper ores, coal, and water before proposing the first smelting line.
