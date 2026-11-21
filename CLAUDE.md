@@ -3,6 +3,9 @@
 ## Goal
 Claude CodeからFactorio LLM Use MCPで工場を調査・設計・建設する。
 
+## 工場設計の原則
+工場の新設・増設・物流変更を提案するときや、次に取り組む課題を決めるときは、先に `docs/philosophy.md` を読む。提案では、**何を実現したいか、何がそれを妨げていると考えるか、どう確かめるか**を簡潔に示す。適用する原則は、その判断に関係するものを選ぶ。
+
 ## Environment
 - macOS M3 / Factorio 2.1.24 / AngelBob + Space Age
 - MCP: factorio-llm-use（RCON経由、セーブのコピーで動作）
