@@ -1,0 +1,9 @@
+{
+  "name": "factory-telemetry",
+  "version": "0.1.0",
+  "title": "Factory Telemetry (experimental)",
+  "author": "dkpcb",
+  "factorio_version": "2.0",
+  "description": "Observation-only event exporter for an external Factorio world model. Experimental Phase 1.",
+  "dependencies": ["base >= 2.0.0"]
+}
